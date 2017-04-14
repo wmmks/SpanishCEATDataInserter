@@ -24,18 +24,25 @@ public class IOManager {
 	private ArrayList<String> stopword;
 	private BufferedReader br;
 	private BufferedWriter bw;
-	FileInputStream fis;
-	InputStreamReader isr;
 
+	private String codeType;
 	public IOManager()
 	{
-
+		codeType="";
+	}
+	public void setCodetype(String codetype)
+	{
+		codeType=codetype;
 	}
 	public void setreadpath(String target)
 	{
+		if(codeType.length()==0)
+		{
+			codeType="utf-8";
+		}
 		this.readtarget=target;
 		try {
-			br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),"utf-8"));
+			br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),codeType));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,6 +53,7 @@ public class IOManager {
 	}
 	public void setreadpath(String target, String codeType)
 	{
+		this.codeType=codeType;
 		this.readtarget=target;
 		try {
 			br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),codeType));
@@ -94,7 +102,7 @@ public class IOManager {
 	{
 		File file=new File(writetarget);
 		try {
-			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,false),"UTF-8"));
+			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,false),codeType));
 			for(int i=0;i<stringset.size();i++)
 			{
 				bw.write(stringset.get(i)+"\r\n");
@@ -115,7 +123,7 @@ public class IOManager {
 	{
 		File file=new File(writetarget);
 		try {
-			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),"UTF-8"));
+			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),codeType));
 			bw.write(string+"\r\n");
 			bw.flush();
 			bw.close();
@@ -130,12 +138,12 @@ public class IOManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void write(String string)
 	{
 		File file=new File(writetarget);
 		try {
-			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),"UTF-8"));
+			bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),codeType));
 			bw.write(string);
 			bw.close();
 		} catch (UnsupportedEncodingException e) {
@@ -158,7 +166,7 @@ public class IOManager {
 			return null;
 		}
 		try {
-			BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),"utf-8"));
+			BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),codeType));
 			while(br.ready())
 			{
 				context+=br.readLine()+"\n";
