@@ -36,10 +36,7 @@ public class IOManager {
 	}
 	public void setreadpath(String target)
 	{
-		if(codeType.length()==0)
-		{
-			codeType="utf-8";
-		}
+		checkCodeType();
 		this.readtarget=target;
 		try {
 			br=new BufferedReader(new InputStreamReader(new FileInputStream(readtarget),codeType));
@@ -49,6 +46,13 @@ public class IOManager {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	private void checkCodeType()
+	{
+		if(codeType.length()==0)
+		{
+			codeType="utf-8";
 		}
 	}
 	public void setreadpath(String target, String codeType)
@@ -84,10 +88,12 @@ public class IOManager {
 	}
 	public void setwritepath(String target)
 	{
+		checkCodeType();
 		this.writetarget=target;
 	}
 	public void setwritepath(String target,boolean create)//create==true ��� �зs�ɮ��л\
 	{
+		checkCodeType();
 		File file=new File(target);
 		if(create)
 		{

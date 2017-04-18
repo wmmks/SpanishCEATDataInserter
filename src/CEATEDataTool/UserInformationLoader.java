@@ -9,7 +9,7 @@ import java.io.*;
 /**
  * Created by roye on 2017/4/14.
  */
-public class userInformationLoader {
+public class UserInformationLoader {
 
     public static void main(String arg[])  {
 

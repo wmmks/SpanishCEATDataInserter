@@ -12,7 +12,7 @@ import java.io.File;
  */
 public class XMLLoader {
     private SAXReader reader;
-    private Document articleDocument;
+    private Document Document;
     private Element articleElement;
 
     public String getArticleName() {
@@ -24,17 +24,16 @@ public class XMLLoader {
     {
         reader= new SAXReader();
     }
-    void setArticleName(String fileName)
+    private void setArticleName(String fileName)
     {
         articleName=fileName;
     }
     void setXMLFile(String filePath)
     {
-        //"054_13054_NCKU_姚蘊玲Natalie-Correccion.xml"
-
         File xmlFile=new File(filePath);
         try {
-            articleDocument = reader.read(xmlFile);
+            Document = reader.read(xmlFile);
+            setArticleName(xmlFile.getName());
         } catch (DocumentException e) {
             e.printStackTrace();
         }
@@ -42,7 +41,7 @@ public class XMLLoader {
     }
     void setArticleElement()
     {
-        articleElement= articleDocument.getRootElement().element("body");
+        articleElement= Document.getRootElement().element("body");
     }
    public Element getArticleElement()
     {

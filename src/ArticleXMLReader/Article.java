@@ -36,10 +36,7 @@ public class Article {
 
     private boolean isCorrected;
 
-    void setArticleName(String name)
-    {
-        articleName=name;
-    }
+
     public String toString()
     {
         String output="";
@@ -47,8 +44,10 @@ public class Article {
         {
             output+=word;
         }
-        output=output.replaceAll("  "," ");
-
+        while(output.contains("  "))
+        {
+            output=output.replaceAll("  "," ");
+        }
         return output;
     }
 }
