@@ -11,7 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="dom4j-1.6.1" level="project" />
-    <orderEntry type="library" exported="" name="sbt-launch" level="project" />
-    <orderEntry type="library" name="play_2.10-2.4.11" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.0.8-bin" level="project" />
   </component>
 </module>

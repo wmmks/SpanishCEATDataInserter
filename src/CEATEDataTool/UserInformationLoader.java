@@ -2,30 +2,119 @@ package CEATEDataTool;
 
 import util.IOManager;
 
-
-import java.io.*;
-
+import java.util.ArrayList;
 
 /**
- * Created by roye on 2017/4/14.
+ * Created by roye on 2017/4/25.
  */
 public class UserInformationLoader {
+    IOManager io;
+    private ArrayList<ArticleInformation> articleInformationList;
+    private ArrayList<ClassInformation> classInformationList;
+    private ArrayList<UserInformation> userInformationList;
+    private ArrayList<UserSpecialExperience> userSpecialExperienceList;
 
-    public static void main(String arg[])  {
+    UserInformationLoader()
+    {
+        io=new IOManager();
+        articleInformationList =new ArrayList<>();
+        classInformationList =new ArrayList<>();
+        userInformationList =new ArrayList<>();
+        userSpecialExperienceList =new ArrayList<>();
+    }
+    public void loadUserInformationFile(String filePath)
+    {
+        io.setreadpath(filePath);
+        String columnName;
+        if(io.ready())
+        {
+            int i=0;
+            columnName=io.readLine();
+            for(String str:columnName.split("\t"))
+            {
+                System.out.println(i+++":"+str);
+            }
 
-
-        IOManager io=new IOManager();
-        io.setCodetype("Unicode");
-        io.setreadpath("CEATE2010 dp_30523Ln_40923Jo.txt");
-        io.setCodetype("utf-8");
-        io.setwritepath("asd.txt",true);
+        }
+        String columnValueRow;
         while(io.ready())
         {
-            io.writeLine(io.readLine());
+            columnValueRow=io.readLine();
+            String[] columnValueSet=columnValueRow.split("\t");
+            addUserInformationDateList(columnValueSet);
         }
+    }
+    private void addUserInformationDateList(String []columnValueSet)
+    {
+        addArticleInformationList(columnValueSet);
+        addClassInformationList(columnValueSet);
+        addUserInformationList(columnValueSet);
+        addUserSpecialExperienceList(columnValueSet);
+    }
+    private void addArticleInformationList(String []columnValueSet)
+    {
+        int [] articleInformationIndex={0,28,29,30,31,32,33,34,35};
+        ArticleInformation articleInformation=new ArticleInformation();
+        articleInformation.setId(Integer.parseInt(columnValueSet[articleInformationIndex[0]]));
+        articleInformation.setSubmittedYear(columnValueSet[articleInformationIndex[1]]);
+        articleInformation.setSubmittedMonth(columnValueSet[articleInformationIndex[2]]);
+        articleInformation.setHaveSubmitted(columnValueSet[articleInformationIndex[3]]);
+        articleInformation.setWrittingLocation(columnValueSet[articleInformationIndex[4]]);
+        articleInformation.setArticleStyle(columnValueSet[articleInformationIndex[5]]);
+        articleInformation.setArticleTopic(columnValueSet[articleInformationIndex[6]]);
+        articleInformation.setArticleTitle(columnValueSet[articleInformationIndex[7]]);
+        articleInformation.setNumberOfWords(columnValueSet[articleInformationIndex[8]]);
+        articleInformationList.add(articleInformation);
 
+    }
+    private void addUserInformationList(String []columnVauleSet)
+    {
+        int [] userInformationIndex={0,1,2,3,4,5,6,7,8,9,10,17,18,19,25,26,27};
+        UserInformation userInformation=new UserInformation();
+        userInformation.setId(Integer.parseInt(columnVauleSet[userInformationIndex[0]]));
+        userInformation.setIdUnderYear(columnVauleSet[userInformationIndex[1]]);
+        userInformation.setChineseName(columnVauleSet[userInformationIndex[2]]);
+        userInformation.setSpanishName(columnVauleSet[userInformationIndex[3]]);
+        userInformation.setGender(columnVauleSet[userInformationIndex[4]]);
+        userInformation.setSchoolName(columnVauleSet[userInformationIndex[5]]);
+        userInformation.setStudentId(columnVauleSet[userInformationIndex[6]]);
+        userInformation.setSchoolSystem(columnVauleSet[userInformationIndex[7]]);
+        userInformation.setDepartment(columnVauleSet[userInformationIndex[8]]);
+        userInformation.setGrade(columnVauleSet[userInformationIndex[9]]);
+        userInformation.setGroup(columnVauleSet[userInformationIndex[10]]);
+        userInformation.setLearningHours(Integer.parseInt(columnVauleSet[userInformationIndex[11]]));
+        userInformation.setLearningYears(columnVauleSet[userInformationIndex[12]]);
+        userInformation.setLearningMonths(columnVauleSet[userInformationIndex[13]]);
+        userInformation.setWisconsinNumberOfCorrect(Integer.parseInt(columnVauleSet[userInformationIndex[14]]));
+        userInformation.setWisconsinScore(Integer.parseInt(columnVauleSet[userInformationIndex[15]]));
+        userInformation.setDateOfAgreementSubmit(columnVauleSet[userInformationIndex[16]]);
+        userInformationList.add(userInformation);
 
-
+    }
+    private void addClassInformationList(String []columnVauleSet)
+    {
+        int [] classInformationIndex={0,11,12,13,14,15,16};
+        ClassInformation classInformation=new ClassInformation();
+        classInformation.setId(Integer.parseInt(columnVauleSet[classInformationIndex[0]]));
+        classInformation.setClassName(columnVauleSet[classInformationIndex[1]]);
+        classInformation.setClassSchoolSystem(columnVauleSet[classInformationIndex[2]]);
+        classInformation.setClassDepartment(columnVauleSet[classInformationIndex[3]]);
+        classInformation.setClassGrade(columnVauleSet[classInformationIndex[4]]);
+        classInformation.setClassGroup(columnVauleSet[classInformationIndex[5]]);
+        classInformation.setTeacher(columnVauleSet[classInformationIndex[6]]);
+        classInformationList.add(classInformation);
+    }
+    private void addUserSpecialExperienceList(String []columnVauleSet)
+    {
+        int [] classInformationIndex={0,20,21,22,23,24};
+        UserSpecialExperience userSpecialExperience=new UserSpecialExperience();
+        userSpecialExperience.setId(Integer.parseInt(columnVauleSet[classInformationIndex[0]]));
+        userSpecialExperience.setMotherTongue(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperience.setSpecialExeperience(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperience.setSpanishRelatedResident(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperience.setSpanishRelatedExchange(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperience.setSpanishDepartmentExchange(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperienceList.add(userSpecialExperience);
 
     }
 }
