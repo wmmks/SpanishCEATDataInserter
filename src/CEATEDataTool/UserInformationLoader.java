@@ -1,5 +1,9 @@
 package CEATEDataTool;
 
+import CEATEDataToolModel.ArticleInformation;
+import CEATEDataToolModel.ClassInformation;
+import CEATEDataToolModel.UserInformation;
+import CEATEDataToolModel.UserSpecialExperience;
 import util.IOManager;
 
 import java.util.ArrayList;
@@ -9,6 +13,7 @@ import java.util.ArrayList;
  */
 public class UserInformationLoader {
     IOManager io;
+    private int size;
     private ArrayList<ArticleInformation> articleInformationList;
     private ArrayList<ClassInformation> classInformationList;
     private ArrayList<UserInformation> userInformationList;
@@ -17,10 +22,31 @@ public class UserInformationLoader {
     UserInformationLoader()
     {
         io=new IOManager();
+        size=0;
         articleInformationList =new ArrayList<>();
         classInformationList =new ArrayList<>();
         userInformationList =new ArrayList<>();
         userSpecialExperienceList =new ArrayList<>();
+    }
+    public int size()
+    {
+        return size;
+    }
+    public ArticleInformation getArticleInformation(int index)
+    {
+        return articleInformationList.get(index);
+    }
+    public ClassInformation getClassInformation(int index)
+    {
+        return classInformationList.get(index);
+    }
+    public UserSpecialExperience getUserSpecialExperience(int index)
+    {
+        return userSpecialExperienceList.get(index);
+    }
+    public UserInformation getUserInformation(int index)
+    {
+        return userInformationList.get(index);
     }
     public void loadUserInformationFile(String filePath)
     {
@@ -30,11 +56,6 @@ public class UserInformationLoader {
         {
             int i=0;
             columnName=io.readLine();
-            for(String str:columnName.split("\t"))
-            {
-                System.out.println(i+++":"+str);
-            }
-
         }
         String columnValueRow;
         while(io.ready())
@@ -50,6 +71,7 @@ public class UserInformationLoader {
         addClassInformationList(columnValueSet);
         addUserInformationList(columnValueSet);
         addUserSpecialExperienceList(columnValueSet);
+        size+=1;
     }
     private void addArticleInformationList(String []columnValueSet)
     {
@@ -103,17 +125,18 @@ public class UserInformationLoader {
         classInformation.setClassGroup(columnVauleSet[classInformationIndex[5]]);
         classInformation.setTeacher(columnVauleSet[classInformationIndex[6]]);
         classInformationList.add(classInformation);
+
     }
     private void addUserSpecialExperienceList(String []columnVauleSet)
     {
-        int [] classInformationIndex={0,20,21,22,23,24};
+        int [] userSpecialExperienceIndex={0,20,21,22,23,24};
         UserSpecialExperience userSpecialExperience=new UserSpecialExperience();
-        userSpecialExperience.setId(Integer.parseInt(columnVauleSet[classInformationIndex[0]]));
-        userSpecialExperience.setMotherTongue(columnVauleSet[classInformationIndex[0]]);
-        userSpecialExperience.setSpecialExeperience(columnVauleSet[classInformationIndex[0]]);
-        userSpecialExperience.setSpanishRelatedResident(columnVauleSet[classInformationIndex[0]]);
-        userSpecialExperience.setSpanishRelatedExchange(columnVauleSet[classInformationIndex[0]]);
-        userSpecialExperience.setSpanishDepartmentExchange(columnVauleSet[classInformationIndex[0]]);
+        userSpecialExperience.setId(Integer.parseInt(columnVauleSet[userSpecialExperienceIndex[0]]));
+        userSpecialExperience.setMotherTongue(columnVauleSet[userSpecialExperienceIndex[1]]);
+        userSpecialExperience.setSpecialExeperience(columnVauleSet[userSpecialExperienceIndex[2]]);
+        userSpecialExperience.setSpanishRelatedResident(columnVauleSet[userSpecialExperienceIndex[3]]);
+        userSpecialExperience.setSpanishRelatedExchange(columnVauleSet[userSpecialExperienceIndex[4]]);
+        userSpecialExperience.setSpanishDepartmentExchange(columnVauleSet[userSpecialExperienceIndex[5]]);
         userSpecialExperienceList.add(userSpecialExperience);
 
     }

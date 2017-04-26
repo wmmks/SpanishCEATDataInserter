@@ -1,9 +1,15 @@
-package CEATEDataTool;
+package CEATEDataToolModel;
+
+import CEATEDataTool.TransformToSqlObject;
+import databaseUtil.SqlObject;
+import variableTableFolder.DatabaseColumnNameVariableTable;
+
+import javax.xml.crypto.Data;
 
 /**
  * Created by roye on 2017/4/25.
  */
-public class ArticleInformation {
+public class ArticleInformation implements TransformToSqlObject {
 
     public int getId() {
         return id;
@@ -95,4 +101,33 @@ public class ArticleInformation {
 
     private String numberOfWords;
 
+    @Override
+    public String toString() {
+        return "ArticleInformation{" +
+                "id=" + id +
+                ", submittedYear='" + submittedYear + '\'' +
+                ", submittedMonth='" + submittedMonth + '\'' +
+                ", haveSubmitted='" + haveSubmitted + '\'' +
+                ", writtingLocation='" + writtingLocation + '\'' +
+                ", articleStyle='" + articleStyle + '\'' +
+                ", articleTopic='" + articleTopic + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", numberOfWords='" + numberOfWords + '\'' +
+                '}';
+    }
+
+    @Override
+    public SqlObject toSqlObject() {
+        SqlObject sqlObject=new SqlObject();
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.submittedYear,this.submittedYear);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.submittedMonth,this.submittedMonth);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.haveSubmitted,this.haveSubmitted);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.writtingLocation,this.writtingLocation);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.articleStyle,this.articleStyle);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.articleTopic,this.articleTopic);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.articleTitle,this.articleTitle);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.numberOfWords,this.numberOfWords);
+        return sqlObject;
+    }
 }

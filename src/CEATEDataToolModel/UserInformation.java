@@ -1,9 +1,13 @@
-package CEATEDataTool;
+package CEATEDataToolModel;
+
+import CEATEDataTool.TransformToSqlObject;
+import databaseUtil.SqlObject;
+import variableTableFolder.DatabaseColumnNameVariableTable;
 
 /**
  * Created by roye on 2017/4/25.
  */
-public class UserInformation {
+public class UserInformation implements TransformToSqlObject {
     private int id;
 
     public int getId() {
@@ -134,14 +138,6 @@ public class UserInformation {
         this.dateOfAgreementSubmit = dateOfAgreementSubmit;
     }
 
-    public String getSpecialExperiences() {
-        return specialExperiences;
-    }
-
-    public void setSpecialExperiences(String specialExperiences) {
-        this.specialExperiences = specialExperiences;
-    }
-
     public String getIdUnderYear() {
         return idUnderYear;
     }
@@ -166,6 +162,51 @@ public class UserInformation {
     private int wisconsinNumberOfCorrect;
     private int wisconsinScore;
     private String dateOfAgreementSubmit;
-    private String specialExperiences;
 
+
+    @Override
+    public SqlObject toSqlObject() {
+        SqlObject sqlObject=new SqlObject();
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.idUnderYear,this.idUnderYear);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.chineseName,this.chineseName);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.spanishName,this.spanishName);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.gender,this.gender);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.schoolName,this.schoolName);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.studentId,this.studentId);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.schoolStstem,this.schoolSystem);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.department,this.department);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.grade,this.grade);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.group,this.group);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.learningHours,this.learningHours);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.learningYears,this.learningYears);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.learningMonths,this.learningMonths);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.wisconsinNumberOfCorrect,this.wisconsinNumberOfCorrect);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.wisconsinScore,this.wisconsinScore);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.dateOfAgreementSubmit,this.dateOfAgreementSubmit);
+        return sqlObject;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInformation{" +
+                "id=" + id +
+                ", idUnderYear='" + idUnderYear + '\'' +
+                ", chineseName='" + chineseName + '\'' +
+                ", spanishName='" + spanishName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", schoolName='" + schoolName + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", schoolSystem='" + schoolSystem + '\'' +
+                ", department='" + department + '\'' +
+                ", grade='" + grade + '\'' +
+                ", group='" + group + '\'' +
+                ", learningHours=" + learningHours +
+                ", learningYears='" + learningYears + '\'' +
+                ", learningMonths='" + learningMonths + '\'' +
+                ", wisconsinNumberOfCorrect=" + wisconsinNumberOfCorrect +
+                ", wisconsinScore=" + wisconsinScore +
+                ", dateOfAgreementSubmit='" + dateOfAgreementSubmit + '\'' +
+                '}';
+    }
 }
