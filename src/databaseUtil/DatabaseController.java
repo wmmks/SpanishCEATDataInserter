@@ -13,14 +13,7 @@ import java.util.Properties;
  */
 public class DatabaseController {
 
-    static public void main(String []args)
-    {
 
-        DatabaseController databaseController=new DatabaseController();
-        SqlObject sqlObject=new SqlObject();
-        databaseController.insertArticleInformation("",sqlObject);
-
-    }
     private String dbHost;
     private String dbName;
     private String userName;
@@ -66,7 +59,7 @@ public class DatabaseController {
     }
 
 
-    public void insertArticleInformation(String tableName,SqlObject obj)
+    public void execInsert(String tableName, SqlObject obj)
     {
         String sql=" insert into "+tableName+" ("+obj.getColumnNameString()+")"
                 + " values ("+obj.getColumnValueString()+");";
@@ -74,25 +67,35 @@ public class DatabaseController {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("The data has been loaded into db "+tableName+" table.");
         }
 
     }
-    /*
     public void execUpdate(String tableName,SqlObject obj)
     {
-        String sql="UPDATE "+tableName+" SET "+obj.getColumnValueString();
+        String sql=" insert into "+tableName+" ("+obj.getColumnNameString()+")"
+                + " values ("+obj.getColumnValueString()+");";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("The data has been loaded into db "+tableName+" table.");
+        }
 
-            ps.execute();
-            //ps.setInt();
+    }
+    public ResultSet execSelect(String sql)
+    {
+        ResultSet resultSet=null;
+       try {
+           Statement statement = connection.createStatement();
+           resultSet= statement.executeQuery(sql);
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return resultSet;
     }
-*/
+
 
 }

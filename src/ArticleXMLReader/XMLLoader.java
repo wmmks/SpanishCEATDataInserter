@@ -20,7 +20,7 @@ public class XMLLoader {
     }
 
     private String articleName;
-    XMLLoader()
+    public XMLLoader()
     {
         reader= new SAXReader();
     }
@@ -28,7 +28,7 @@ public class XMLLoader {
     {
         articleName=fileName;
     }
-    void setXMLFile(String filePath)
+    public void setXMLFile(String filePath)
     {
         File xmlFile=new File(filePath);
         try {

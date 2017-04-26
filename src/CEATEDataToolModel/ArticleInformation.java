@@ -4,8 +4,6 @@ import CEATEDataTool.TransformToSqlObject;
 import databaseUtil.SqlObject;
 import variableTableFolder.DatabaseColumnNameVariableTable;
 
-import javax.xml.crypto.Data;
-
 /**
  * Created by roye on 2017/4/25.
  */

@@ -68,4 +68,11 @@ public class DatabaseColumnNameVariableTable {
     public static String classGrade="class_grade";
     public static String classGroutp="class_group";
     public static String teacher="teacher";
+
+    /**
+        *articles_content column Name List: the column name of articles_content table;
+        */
+    public static String originalArticleText="original_article_text";
+    public static String correctedArticleText="corrected_article_text";
+
 }

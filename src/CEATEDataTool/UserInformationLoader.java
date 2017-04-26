@@ -19,7 +19,7 @@ public class UserInformationLoader {
     private ArrayList<UserInformation> userInformationList;
     private ArrayList<UserSpecialExperience> userSpecialExperienceList;
 
-    UserInformationLoader()
+    public UserInformationLoader()
     {
         io=new IOManager();
         size=0;

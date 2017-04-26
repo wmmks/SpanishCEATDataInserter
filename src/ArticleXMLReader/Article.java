@@ -6,9 +6,15 @@ import java.util.ArrayList;
  * Created by roye on 2017/4/17.
  */
 public class Article {
+    public String getArticleId() {
+        return articleId;
+    }
+
+    private String articleId;
     private ArrayList<String> wordList;
-    Article(String name,boolean isCorrected)
+    Article(String name,String articleId,boolean isCorrected)
     {
+        this.articleId=articleId;
         wordList=new ArrayList<String>();
         articleName=name;
         this.isCorrected=isCorrected;

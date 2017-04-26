@@ -33,8 +33,8 @@ public class XMLArticleExtractor {
     }
     public void extractArticle()
     {
-        originalArticle=new Article(xmlLoader.getArticleName(),false);
-        correctedArticle=new Article(xmlLoader.getArticleName()+ XMLArticleExtractorVariableTable.xmlCorrectedFileNameTag,true);
+        originalArticle=new Article(xmlLoader.getArticleName(),xmlLoader.getArticleName().split("_")[0],false);
+        correctedArticle=new Article(xmlLoader.getArticleName()+ XMLArticleExtractorVariableTable.xmlCorrectedFileNameTag,xmlLoader.getArticleName().split("_")[0],true);
         Iterator ir= articleElement.nodeIterator();
         while(ir.hasNext())
         {

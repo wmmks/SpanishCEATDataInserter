@@ -1,6 +1,5 @@
 package ArticleXMLReader;
 
-import util.IOManager;
 import variableTableFolder.ArticleFormatFactoryVariableTable;
 
 /**
@@ -17,6 +16,11 @@ public class ArticleFormatFactory {
 
     private String articleText;
 
+    public String getArticleId() {
+        return articleId;
+    }
+
+    private String articleId;
     public String getFileName() {
         return fileName;
     }
@@ -28,22 +32,23 @@ public class ArticleFormatFactory {
     {
         fileName=article.getArticleName();
         articleText =article.toString();
+        articleId=article.getArticleId();
+
     }
+
     private String fileName;
-    public void convertAndWriteFile(String path)
+    public String convertArticle()
     {
-        IOManager io=new IOManager();
         String writerName=extractWriterName(fileName);
-        io.setwritepath(path+fileName,true);
         try{
-            io.writeLine(articleText.split(writerName)[1]);
+            articleText=articleText.split(writerName)[1];
         }
         catch(ArrayIndexOutOfBoundsException e)
         {
-            io.writeLine(articleText);
+
         }
 
-
+        return articleText;
     }
     private String extractWriterName(String fileName)
     {
