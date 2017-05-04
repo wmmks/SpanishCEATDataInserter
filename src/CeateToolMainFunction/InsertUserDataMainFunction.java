@@ -1,5 +1,6 @@
 package CeateToolMainFunction;
 
+import CEATEDataTool.UserInformationFileCodeTypeTransformer;
 import CEATEDataTool.UserInformationLoader;
 import databaseUtil.DatabaseController;
 import variableTableFolder.DatabaseColumnNameVariableTable;
@@ -12,10 +13,11 @@ public class InsertUserDataMainFunction {
 
     public static void main(String args[])
     {
+        UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2010.txt");
         UserInformationLoader userInformationLoader=new UserInformationLoader();
-        userInformationLoader.loadUserInformationFile("asd.txt");
+        userInformationLoader.loadUserInformationFile(codeTransformedName);
         insertUserData(userInformationLoader);
-        InsertArticleMainFunction articleConverter=new InsertArticleMainFunction();
 
     }
     static void insertUserData(UserInformationLoader userInformationLoader)

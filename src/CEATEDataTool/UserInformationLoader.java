@@ -61,6 +61,11 @@ public class UserInformationLoader {
         while(io.ready())
         {
             columnValueRow=io.readLine();
+
+            if(columnValueRow.replaceAll("\t","").length()==0)
+            {
+                continue;
+            }
             String[] columnValueSet=columnValueRow.split("\t");
             addUserInformationDateList(columnValueSet);
         }

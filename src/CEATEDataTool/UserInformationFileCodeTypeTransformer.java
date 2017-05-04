@@ -20,7 +20,7 @@ public class UserInformationFileCodeTypeTransformer {
         io=new IOManager();
 
     }
-    public void convert(String filename)
+    public String convert(String filename)
     {
         String transformed="-transformed";
         io.setCodetype(readCodeType);
@@ -31,6 +31,7 @@ public class UserInformationFileCodeTypeTransformer {
         {
             io.writeLine(io.readLine());
         }
+        return filename+transformed;
     }
 
 

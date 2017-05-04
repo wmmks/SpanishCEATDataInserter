@@ -24,20 +24,20 @@ public class InsertArticleMainFunction {
     {
 
         Properties properties=new Properties();
-            IOManager io=new IOManager();
+        IOManager io=new IOManager();
 
-            try {
-                properties.load(new FileInputStream("configuration.properties"));
-                outputPath=properties.getProperty("outputFilePath");
-                inputPath=properties.getProperty("inputFilePath");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            properties.load(new FileInputStream("configuration.properties"));
+            outputPath=properties.getProperty("outputFilePath");
+            inputPath=properties.getProperty("inputFilePath");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            File folder=new File(inputPath);
-            String[] fileNameSet = new String[0];
-            if(folder.isDirectory())
-            {
+        File folder=new File(inputPath);
+        String[] fileNameSet = new String[0];
+        if(folder.isDirectory())
+        {
             fileNameSet=folder.list();
         }
         XMLArticleExtractor articleExtractor=new XMLArticleExtractor();
