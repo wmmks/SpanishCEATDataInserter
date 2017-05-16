@@ -14,7 +14,7 @@ public class InsertUserDataMainFunction {
     public static void main(String args[])
     {
         UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
-        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2010.txt");
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2013.txt");
         UserInformationLoader userInformationLoader=new UserInformationLoader();
         userInformationLoader.loadUserInformationFile(codeTransformedName);
         insertUserData(userInformationLoader);

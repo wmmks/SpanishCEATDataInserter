@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * Created by roye on 2017/4/25.
  */
 public class UserInformationLoader {
-    IOManager io;
-    private int size;
-    private ArrayList<ArticleInformation> articleInformationList;
-    private ArrayList<ClassInformation> classInformationList;
-    private ArrayList<UserInformation> userInformationList;
-    private ArrayList<UserSpecialExperience> userSpecialExperienceList;
+    private IOManager io;
+    protected int size;
+    protected ArrayList<ArticleInformation> articleInformationList;
+    protected ArrayList<ClassInformation> classInformationList;
+    protected ArrayList<UserInformation> userInformationList;
+    protected ArrayList<UserSpecialExperience> userSpecialExperienceList;
 
     public UserInformationLoader()
     {
@@ -70,7 +70,7 @@ public class UserInformationLoader {
             addUserInformationDateList(columnValueSet);
         }
     }
-    private void addUserInformationDateList(String []columnValueSet)
+    protected void addUserInformationDateList(String []columnValueSet)
     {
         addArticleInformationList(columnValueSet);
         addClassInformationList(columnValueSet);
