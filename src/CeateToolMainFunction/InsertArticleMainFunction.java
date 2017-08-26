@@ -22,10 +22,9 @@ public class InsertArticleMainFunction {
     static String outputPath;
     static public void main(String args[])
     {
-
+        int systemType=2;
         Properties properties=new Properties();
         IOManager io=new IOManager();
-
         try {
             properties.load(new FileInputStream("configuration.properties"));
             outputPath=properties.getProperty("outputFilePath");
@@ -56,15 +55,16 @@ public class InsertArticleMainFunction {
             String correctedArticleText=articleFormatFactory.convertArticle();
             articleFormatFactory.loadArticle(originalArticle);
             String oritinalArticleText=articleFormatFactory.convertArticle();
-            insertArticle(articleId,oritinalArticleText,correctedArticleText,articleXML);
+            insertArticle(articleId,systemType,oritinalArticleText,correctedArticleText,articleXML);
         }
 
     }
-    static void insertArticle(int id, String originalArticleText, String correctedArticle,String xmlContent)
+    static void insertArticle(int id,int systemType, String originalArticleText, String correctedArticle,String xmlContent)
     {
         DatabaseController databaseController =new DatabaseController();
         SqlObject articleSqlObject=new SqlObject();
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,id);
+        articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.systemType,systemType);
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.originalArticleText,originalArticleText);
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.correctedArticleText,correctedArticle);
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.xmlContent,xmlContent);

@@ -8,7 +8,17 @@ import variableTableFolder.DatabaseColumnNameVariableTable;
  * Created by roye on 2017/4/25.
  */
 public class ClassInformation implements TransformToSqlObject {
-    private int id;
+    protected int id;
+
+    public int getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(int systemType) {
+        this.systemType = systemType;
+    }
+
+    protected int systemType;
 
     public int getId() {
         return id;
@@ -66,17 +76,18 @@ public class ClassInformation implements TransformToSqlObject {
         this.teacher = teacher;
     }
 
-    private String className;
-    private String classSchoolSystem;
-    private String classDepartment;
-    private String classGrade;
-    private String classGroup;
-    private String teacher;
+    protected String className;
+    protected String classSchoolSystem;
+    protected String classDepartment;
+    protected String classGrade;
+    protected String classGroup;
+    protected String teacher;
 
     @Override
     public SqlObject toSqlObject() {
         SqlObject sqlObject=new SqlObject();
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.systemType,this.systemType);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.className,this.className);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.classSchoolSystem,this.classSchoolSystem);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.classDepartment,this.classDepartment);

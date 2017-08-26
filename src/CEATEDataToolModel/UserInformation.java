@@ -8,7 +8,17 @@ import variableTableFolder.DatabaseColumnNameVariableTable;
  * Created by roye on 2017/4/25.
  */
 public class UserInformation implements TransformToSqlObject {
-    private int id;
+    protected int id;
+
+    public int getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(int systemType) {
+        this.systemType = systemType;
+    }
+
+    protected int systemType;
 
     public int getId() {
         return id;
@@ -146,28 +156,29 @@ public class UserInformation implements TransformToSqlObject {
         this.idUnderYear = idUnderYear;
     }
 
-    private String idUnderYear;
-    private String chineseName;
-    private String spanishName;
-    private String gender;
-    private String schoolName;
-    private String studentId;
-    private String schoolSystem;
-    private String department;
-    private String grade;
-    private String group;
-    private int learningHours;
-    private String learningYears;
-    private String learningMonths;
-    private int wisconsinNumberOfCorrect;
-    private int wisconsinScore;
-    private String dateOfAgreementSubmit;
+    protected String idUnderYear;
+    protected String chineseName;
+    protected String spanishName;
+    protected String gender;
+    protected String schoolName;
+    protected String studentId;
+    protected String schoolSystem;
+    protected String department;
+    protected String grade;
+    protected String group;
+    protected int learningHours;
+    protected String learningYears;
+    protected String learningMonths;
+    protected int wisconsinNumberOfCorrect;
+    protected int wisconsinScore;
+    protected String dateOfAgreementSubmit;
 
 
     @Override
     public SqlObject toSqlObject() {
         SqlObject sqlObject=new SqlObject();
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.systemType,this.systemType);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.idUnderYear,this.idUnderYear);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.chineseName,this.chineseName);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.spanishName,this.spanishName);

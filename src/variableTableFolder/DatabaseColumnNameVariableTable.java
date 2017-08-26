@@ -32,6 +32,8 @@ public class DatabaseColumnNameVariableTable {
     public static String articleTopic="article_topic";
     public static String articleTitle="article_title";
     public static String numberOfWords="number_of_words";
+    public static String longMin="long_min";
+    public static String longSeg="long_seg";
     /**
         * user_information column Name List: the column name of user_information table
          * */
@@ -51,7 +53,9 @@ public class DatabaseColumnNameVariableTable {
     public static String learningMonths="learning_months";
     public static String wisconsinNumberOfCorrect="wisconsin_number_of_correct";
     public static String wisconsinScore="wisconsin_score";
+    public static String level="level";
     public static String dateOfAgreementSubmit="date_of_agreement_submit";
+    public static String collector="collector";
     /*
         *  user_special_information column Name List: the column name of special_information table;
         * */

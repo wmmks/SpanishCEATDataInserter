@@ -17,8 +17,17 @@ public class ArticleInformation implements TransformToSqlObject {
         this.id = id;
     }
 
-    private int id;
+    protected int id;
 
+    public int getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(int systemType) {
+        this.systemType = systemType;
+    }
+
+    protected int systemType;
     public String getSubmittedYear() {
         return submittedYear;
     }
@@ -27,7 +36,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.submittedYear = submittedYear;
     }
 
-    private String submittedYear;
+    protected String submittedYear;
 
     public String getSubmittedMonth() {
         return submittedMonth;
@@ -37,7 +46,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.submittedMonth = submittedMonth;
     }
 
-    private String submittedMonth;
+    protected String submittedMonth;
 
     public String getHaveSubmitted() {
         return haveSubmitted;
@@ -47,7 +56,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.haveSubmitted = haveSubmitted;
     }
 
-    private String haveSubmitted;
+    protected String haveSubmitted;
 
     public String getWrittingLocation() {
         return writtingLocation;
@@ -57,7 +66,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.writtingLocation = writtingLocation;
     }
 
-    private String writtingLocation;
+    protected String writtingLocation;
 
     public String getArticleStyle() {
         return articleStyle;
@@ -67,7 +76,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.articleStyle = articleStyle;
     }
 
-    private String articleStyle;
+    protected String articleStyle;
 
     public String getArticleTopic() {
         return articleTopic;
@@ -77,7 +86,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.articleTopic = articleTopic;
     }
 
-    private String articleTopic;
+    protected String articleTopic;
 
     public String getArticleTitle() {
         return articleTitle;
@@ -87,7 +96,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.articleTitle = articleTitle;
     }
 
-    private String articleTitle;
+    protected String articleTitle;
 
     public String getNumberOfWords() {
         return numberOfWords;
@@ -97,7 +106,7 @@ public class ArticleInformation implements TransformToSqlObject {
         this.numberOfWords = numberOfWords;
     }
 
-    private String numberOfWords;
+    protected String numberOfWords;
 
     @Override
     public String toString() {
@@ -118,6 +127,7 @@ public class ArticleInformation implements TransformToSqlObject {
     public SqlObject toSqlObject() {
         SqlObject sqlObject=new SqlObject();
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.systemType,this.systemType);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.submittedYear,this.submittedYear);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.submittedMonth,this.submittedMonth);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.haveSubmitted,this.haveSubmitted);

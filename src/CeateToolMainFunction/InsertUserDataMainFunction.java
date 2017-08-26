@@ -1,7 +1,8 @@
 package CeateToolMainFunction;
 
-import CEATEDataTool.UserInformationFileCodeTypeTransformer;
-import CEATEDataTool.UserInformationLoader;
+import CEATEDataTool.*;
+import CEATEDataToolModel.CoateArticleInformation;
+import CEATEDataToolModel.UserInformation;
 import databaseUtil.DatabaseController;
 import variableTableFolder.DatabaseColumnNameVariableTable;
 
@@ -13,10 +14,18 @@ public class InsertUserDataMainFunction {
 
     public static void main(String args[])
     {
-        int systemType=1;
+        int systemType=2;
         UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
-        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2011.txt");
-        UserInformationLoader userInformationLoader=new UserInformationLoader();
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2013.txt");
+        UserInformationLoader userInformationLoader;
+        if(systemType==1)
+        {
+            userInformationLoader=new UserInformationLoader();
+        }
+        else
+        {
+            userInformationLoader=new CoateUserInformationLoader();
+        }
         userInformationLoader.loadUserInformationFile(codeTransformedName,systemType);
         insertUserData(userInformationLoader);
 
@@ -30,7 +39,6 @@ public class InsertUserDataMainFunction {
             databaseController.execInsert(DatabaseColumnNameVariableTable.classInformationTableName,userInformationLoader.getClassInformation(i).toSqlObject());
             databaseController.execInsert(DatabaseColumnNameVariableTable.usersInformationTableName,userInformationLoader.getUserInformation(i).toSqlObject());
             databaseController.execInsert(DatabaseColumnNameVariableTable.usersSpecialExperienceTableName,userInformationLoader.getUserSpecialExperience(i).toSqlObject());
-            databaseController.execInsert(DatabaseColumnNameVariableTable.dataSystemTypeTableName,userInformationLoader.getDataSystemTypeInformation(i).toSqlObject());
         }
 
     }

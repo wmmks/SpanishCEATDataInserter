@@ -63,12 +63,14 @@ public class DatabaseController {
     {
         String sql=" insert into "+tableName+" ("+obj.getColumnNameString()+")"
                 + " values ("+obj.getColumnValueString()+");";
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.execute();
         } catch (SQLException e) {
             System.out.println("The data has been loaded into db "+tableName+" table.");
         }
+
 
     }
     public void execUpdate(String tableName,SqlObject obj)

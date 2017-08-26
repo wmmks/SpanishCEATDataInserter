@@ -8,12 +8,21 @@ import variableTableFolder.DatabaseColumnNameVariableTable;
  * Created by roye on 2017/4/25.
  */
 public class UserSpecialExperience implements TransformToSqlObject {
-    private int id;
-    private String motherTongue;
-    private String specialExeperience;
-    private String spanishRelatedResident;
-    private String spanishRelatedExchange;
+    protected int id;
+    protected String motherTongue;
+    protected String specialExeperience;
+    protected String spanishRelatedResident;
+    protected String spanishRelatedExchange;
 
+    public int getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(int systemType) {
+        this.systemType = systemType;
+    }
+
+    protected int systemType;
     public int getId() {
         return id;
     }
@@ -62,12 +71,13 @@ public class UserSpecialExperience implements TransformToSqlObject {
         this.spanishDepartmentExchange = spanishDepartmentExchange;
     }
 
-    private String spanishDepartmentExchange;
+    protected String spanishDepartmentExchange;
 
     @Override
     public SqlObject toSqlObject() {
         SqlObject sqlObject=new SqlObject();
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,this.id);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.systemType,this.systemType);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.motherTongue,this.motherTongue);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.specialExperience,this.specialExeperience);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.spanishRelatedResident,this.spanishRelatedResident);
