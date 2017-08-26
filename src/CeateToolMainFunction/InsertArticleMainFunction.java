@@ -45,27 +45,29 @@ public class InsertArticleMainFunction {
         ArticleFormatFactory articleFormatFactory=new ArticleFormatFactory();
         for(String fileName:fileNameSet)
         {
-            int articleId=Integer.parseInt(fileName.split("_")[0]);
+            int articleId=Integer.parseInt(fileName.split("_| ")[0]);
             xmlLoader.setXMLFile(inputPath+fileName);
             articleExtractor.setXmlLoader(xmlLoader);
             articleExtractor.extractArticle();
+            String articleXML=articleExtractor.getArticleXML();
             Article correctedArticle=articleExtractor.getCorrectedArticle();
             Article originalArticle=articleExtractor.getOriginalArticle();
             articleFormatFactory.loadArticle(correctedArticle);
             String correctedArticleText=articleFormatFactory.convertArticle();
             articleFormatFactory.loadArticle(originalArticle);
             String oritinalArticleText=articleFormatFactory.convertArticle();
-            insertArticle(articleId,oritinalArticleText,correctedArticleText);
+            insertArticle(articleId,oritinalArticleText,correctedArticleText,articleXML);
         }
 
     }
-    static void insertArticle(int id, String originalArticleText, String correctedArticle)
+    static void insertArticle(int id, String originalArticleText, String correctedArticle,String xmlContent)
     {
         DatabaseController databaseController =new DatabaseController();
         SqlObject articleSqlObject=new SqlObject();
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.id,id);
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.originalArticleText,originalArticleText);
         articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.correctedArticleText,correctedArticle);
+        articleSqlObject.addSqlObject(DatabaseColumnNameVariableTable.xmlContent,xmlContent);
         databaseController.execInsert(DatabaseColumnNameVariableTable.articlesContentTableName,articleSqlObject);
     }
 

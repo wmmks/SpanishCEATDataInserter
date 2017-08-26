@@ -4,6 +4,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import variableTableFolder.XMLArticleExtractorVariableTable;
 
 import java.io.File;
 
@@ -41,7 +42,11 @@ public class XMLLoader {
     }
     void setArticleElement()
     {
-        articleElement= Document.getRootElement().element("body");
+        articleElement= Document.getRootElement().element(XMLArticleExtractorVariableTable.xmlArticleTagName);
+    }
+    String getArticleXML()
+    {
+        return articleElement.asXML().replaceAll("  "," ");
     }
    public Element getArticleElement()
     {

@@ -1,9 +1,6 @@
 package CEATEDataTool;
 
-import CEATEDataToolModel.ArticleInformation;
-import CEATEDataToolModel.ClassInformation;
-import CEATEDataToolModel.UserInformation;
-import CEATEDataToolModel.UserSpecialExperience;
+import CEATEDataToolModel.*;
 import util.IOManager;
 
 import java.util.ArrayList;
@@ -14,23 +11,30 @@ import java.util.ArrayList;
 public class UserInformationLoader {
     private IOManager io;
     protected int size;
+    protected int systemType;
     protected ArrayList<ArticleInformation> articleInformationList;
     protected ArrayList<ClassInformation> classInformationList;
     protected ArrayList<UserInformation> userInformationList;
     protected ArrayList<UserSpecialExperience> userSpecialExperienceList;
-
+    protected ArrayList<DataSystemTypeInformation> dataSystemTypeInformationList;
     public UserInformationLoader()
     {
         io=new IOManager();
         size=0;
+
         articleInformationList =new ArrayList<>();
         classInformationList =new ArrayList<>();
         userInformationList =new ArrayList<>();
         userSpecialExperienceList =new ArrayList<>();
+        dataSystemTypeInformationList= new ArrayList<>();
     }
     public int size()
     {
         return size;
+    }
+    public DataSystemTypeInformation getDataSystemTypeInformation(int index)
+    {
+        return dataSystemTypeInformationList.get(index);
     }
     public ArticleInformation getArticleInformation(int index)
     {
@@ -48,9 +52,10 @@ public class UserInformationLoader {
     {
         return userInformationList.get(index);
     }
-    public void loadUserInformationFile(String filePath)
+    public void loadUserInformationFile(String filePath,int systemType)
     {
         io.setreadpath(filePath);
+        this.systemType=systemType;
         String columnName;
         if(io.ready())
         {
@@ -58,6 +63,7 @@ public class UserInformationLoader {
             columnName=io.readLine();
         }
         String columnValueRow;
+
         while(io.ready())
         {
             columnValueRow=io.readLine();
@@ -76,6 +82,7 @@ public class UserInformationLoader {
         addClassInformationList(columnValueSet);
         addUserInformationList(columnValueSet);
         addUserSpecialExperienceList(columnValueSet);
+        addDataSystemTypeInformationList(columnValueSet);
         size+=1;
     }
     private void addArticleInformationList(String []columnValueSet)
@@ -144,5 +151,13 @@ public class UserInformationLoader {
         userSpecialExperience.setSpanishDepartmentExchange(columnVauleSet[userSpecialExperienceIndex[5]]);
         userSpecialExperienceList.add(userSpecialExperience);
 
+    }
+    private void addDataSystemTypeInformationList(String []columnVauleSet)
+    {
+        int [] dataSystemTypeIndex={0};
+        DataSystemTypeInformation dataSystemTypeInformation=new DataSystemTypeInformation();
+        dataSystemTypeInformation.setId(Integer.parseInt(columnVauleSet[dataSystemTypeIndex[0]]));
+        dataSystemTypeInformation.setSystemType(systemType);
+        dataSystemTypeInformationList.add(dataSystemTypeInformation);
     }
 }

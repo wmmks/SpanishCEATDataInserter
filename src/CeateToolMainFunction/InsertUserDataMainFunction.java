@@ -13,10 +13,11 @@ public class InsertUserDataMainFunction {
 
     public static void main(String args[])
     {
+        int systemType=1;
         UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
-        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2013.txt");
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2011.txt");
         UserInformationLoader userInformationLoader=new UserInformationLoader();
-        userInformationLoader.loadUserInformationFile(codeTransformedName);
+        userInformationLoader.loadUserInformationFile(codeTransformedName,systemType);
         insertUserData(userInformationLoader);
 
     }
@@ -29,6 +30,7 @@ public class InsertUserDataMainFunction {
             databaseController.execInsert(DatabaseColumnNameVariableTable.classInformationTableName,userInformationLoader.getClassInformation(i).toSqlObject());
             databaseController.execInsert(DatabaseColumnNameVariableTable.usersInformationTableName,userInformationLoader.getUserInformation(i).toSqlObject());
             databaseController.execInsert(DatabaseColumnNameVariableTable.usersSpecialExperienceTableName,userInformationLoader.getUserSpecialExperience(i).toSqlObject());
+            databaseController.execInsert(DatabaseColumnNameVariableTable.dataSystemTypeTableName,userInformationLoader.getDataSystemTypeInformation(i).toSqlObject());
         }
 
     }

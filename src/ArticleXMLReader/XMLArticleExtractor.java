@@ -31,6 +31,10 @@ public class XMLArticleExtractor {
     {
         return correctedArticle;
     }
+    public String getArticleXML()
+    {
+        return articleElement.asXML();
+    }
     public void extractArticle()
     {
         originalArticle=new Article(xmlLoader.getArticleName(),xmlLoader.getArticleName().split("_")[0],false);

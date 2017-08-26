@@ -9,5 +9,6 @@ public class XMLArticleExtractorVariableTable {
     public static String xmlCorrectedTextTag="comment";
     public static String xmlIgnoredTag="000";
     public static String xmlCorrectedFileNameTag ="_corrected";
+    public static String xmlArticleTagName="body";
 }
 

@@ -52,7 +52,7 @@ public class ArticleFormatFactory {
     }
     private String extractWriterName(String fileName)
     {
-        String name=fileName.split("_")[ArticleFormatFactoryVariableTable.WriterNameIndex];
+        String name=fileName.split("_| ")[ArticleFormatFactoryVariableTable.WriterNameIndex];
         String output="";
         for(char word:name.toCharArray())
         {

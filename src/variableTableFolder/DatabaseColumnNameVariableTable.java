@@ -14,6 +14,7 @@ public class DatabaseColumnNameVariableTable {
     public static String classInformationTableName="class_information";
     public static String usersInformationTableName="users_information";
     public static String usersSpecialExperienceTableName="users_special_experience";
+    public static String dataSystemTypeTableName="data_system_type";
     /*
         *  genneric column: It is the id column for all table.
          */
@@ -74,5 +75,9 @@ public class DatabaseColumnNameVariableTable {
         */
     public static String originalArticleText="original_article_text";
     public static String correctedArticleText="corrected_article_text";
-
+    public static String xmlContent="xml_content";
+    /**
+     *data_system_type column Name List: the column name of data system type table;
+     */
+    public static String systemType="system_type";
 }
