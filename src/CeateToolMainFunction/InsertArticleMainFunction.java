@@ -22,7 +22,7 @@ public class InsertArticleMainFunction {
     static String outputPath;
     static public void main(String args[])
     {
-        int systemType=2;
+        int systemType=2;// ceate =1 coate = 2 重要 一定要修改
         Properties properties=new Properties();
         IOManager io=new IOManager();
         try {
