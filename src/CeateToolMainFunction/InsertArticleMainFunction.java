@@ -55,6 +55,7 @@ public class InsertArticleMainFunction {
             String correctedArticleText=articleFormatFactory.convertArticle();
             articleFormatFactory.loadArticle(originalArticle);
             String oritinalArticleText=articleFormatFactory.convertArticle();
+            articleXML=articleXML.replaceAll("\"","\\\\'");
             insertArticle(articleId,systemType,oritinalArticleText,correctedArticleText,articleXML);
         }
 

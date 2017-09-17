@@ -68,6 +68,7 @@ public class DatabaseController {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.execute();
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             System.out.println("The data has been loaded into db "+tableName+" table.");
         }
 
