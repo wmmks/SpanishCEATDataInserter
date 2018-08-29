@@ -81,7 +81,7 @@ public class UserInformationLoader{
     }
     public void addArticleInformationList(String[] columnValueSet)
     {
-        int [] articleInformationIndex={0,28,29,30,31,32,33,34,35};
+        int [] articleInformationIndex={0,28,29,31,32,33,34,35,36};
         ArticleInformation articleInformation=new ArticleInformation();
         articleInformation.setId(Integer.parseInt(columnValueSet[articleInformationIndex[0]]));
         articleInformation.setSystemType(this.systemType);
@@ -98,7 +98,7 @@ public class UserInformationLoader{
     }
     public void addUserInformationList(String[] columnVauleSet)
     {
-        int [] userInformationIndex={0,1,2,3,4,5,6,7,8,9,10,17,18,19,25,26,27};
+        int [] userInformationIndex={0,1,2,3,4,5,6,7,8,9,10,17,18,19,25,26,27,30};
         UserInformation userInformation=new UserInformation();
         userInformation.setId(Integer.parseInt(columnVauleSet[userInformationIndex[0]]));
         userInformation.setSystemType(this.systemType);
@@ -118,6 +118,7 @@ public class UserInformationLoader{
         userInformation.setWisconsinNumberOfCorrect(Integer.parseInt(columnVauleSet[userInformationIndex[14]]));
         userInformation.setWisconsinScore(Integer.parseInt(columnVauleSet[userInformationIndex[15]]));
         userInformation.setDateOfAgreementSubmit(columnVauleSet[userInformationIndex[16]]);
+        userInformation.setCollector(columnVauleSet[userInformationIndex[17]]);
         userInformationList.add(userInformation);
 
     }

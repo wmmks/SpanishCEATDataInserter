@@ -60,7 +60,7 @@ public class DatabaseColumnNameVariableTable {
         *  user_special_information column Name List: the column name of special_information table;
         * */
     public static String motherTongue="mother_tongue";
-    public static String specialExperience="special_exeperience";
+    public static String specialExperience="special_experience";
     public static String spanishRelatedResident="spanish_related_resident";
     public static String spanishRelatedExchange="spanish_related_exchange";
     public static String spanishDepartmentExchange="spanish_department_exchange";

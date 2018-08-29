@@ -148,6 +148,15 @@ public class UserInformation implements TransformToSqlObject {
         this.dateOfAgreementSubmit = dateOfAgreementSubmit;
     }
 
+
+    public String getCollector() {
+        return collector;
+    }
+
+    public void setCollector(String collector) {
+        this.collector = collector;
+    }
+
     public String getIdUnderYear() {
         return idUnderYear;
     }
@@ -172,7 +181,7 @@ public class UserInformation implements TransformToSqlObject {
     protected int wisconsinNumberOfCorrect;
     protected int wisconsinScore;
     protected String dateOfAgreementSubmit;
-
+    protected String collector;
 
     @Override
     public SqlObject toSqlObject() {
@@ -195,6 +204,7 @@ public class UserInformation implements TransformToSqlObject {
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.wisconsinNumberOfCorrect,this.wisconsinNumberOfCorrect);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.wisconsinScore,this.wisconsinScore);
         sqlObject.addSqlObject(DatabaseColumnNameVariableTable.dateOfAgreementSubmit,this.dateOfAgreementSubmit);
+        sqlObject.addSqlObject(DatabaseColumnNameVariableTable.collector,this.collector);
         return sqlObject;
     }
 
@@ -218,6 +228,7 @@ public class UserInformation implements TransformToSqlObject {
                 ", wisconsinNumberOfCorrect=" + wisconsinNumberOfCorrect +
                 ", wisconsinScore=" + wisconsinScore +
                 ", dateOfAgreementSubmit='" + dateOfAgreementSubmit + '\'' +
+                ", collector='" + collector + '\'' +
                 '}';
     }
 }

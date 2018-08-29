@@ -63,7 +63,7 @@ public class DatabaseController {
     {
         String sql=" insert into "+tableName+" ("+obj.getColumnNameString()+")"
                 + " values ("+obj.getColumnValueString()+");";
-
+        System.out.println(sql);
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.execute();

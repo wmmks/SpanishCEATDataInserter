@@ -1,8 +1,6 @@
 package CeateToolMainFunction;
 
 import CEATEDataTool.*;
-import CEATEDataToolModel.CoateArticleInformation;
-import CEATEDataToolModel.UserInformation;
 import databaseUtil.DatabaseController;
 import variableTableFolder.DatabaseColumnNameVariableTable;
 
@@ -14,9 +12,10 @@ public class InsertUserDataMainFunction {
 
     public static void main(String args[])
     {
+        // 請將 excel 轉成 txt (CEATE = 1 COATE = 2)
         int systemType=1;
         UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
-        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2011.txt");
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2007.txt");
         UserInformationLoader userInformationLoader;
         if(systemType==1)
         {

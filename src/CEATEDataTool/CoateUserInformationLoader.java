@@ -43,6 +43,9 @@ public class CoateUserInformationLoader extends  UserInformationLoader {
     }
     public void addUserInformationList(String[] columnVauleSet)
     {
+        for (int i=0; i < columnVauleSet.length; i++) {
+            System.out.println(columnVauleSet[i]);
+        }
         int [] userInformationIndex={0,1,2,3,4,5,6,7,8,9,10,17,18,19,25,26,27,28,31};
         CoateUserInformation userInformation=new CoateUserInformation();
         userInformation.setId(Integer.parseInt(columnVauleSet[userInformationIndex[0]]));
@@ -66,7 +69,6 @@ public class CoateUserInformationLoader extends  UserInformationLoader {
         userInformation.setDateOfAgreementSubmit(columnVauleSet[userInformationIndex[17]]);
         userInformation.setCollector(columnVauleSet[userInformationIndex[18]]);
         userInformationList.add(userInformation);
-
     }
     public void addClassInformationList(String[] columnVauleSet)
     {

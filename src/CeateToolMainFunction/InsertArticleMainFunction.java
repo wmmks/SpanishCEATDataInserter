@@ -22,7 +22,7 @@ public class InsertArticleMainFunction {
     static String outputPath;
     static public void main(String args[])
     {
-        int systemType=2;// ceate =1 coate = 2 重要 一定要修改
+        int systemType = 1;// ceate =1 coate = 2 重要 一定要修改
         Properties properties=new Properties();
         IOManager io=new IOManager();
         try {
@@ -32,7 +32,6 @@ public class InsertArticleMainFunction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         File folder=new File(inputPath);
         String[] fileNameSet = new String[0];
         if(folder.isDirectory())
@@ -45,6 +44,7 @@ public class InsertArticleMainFunction {
         for(String fileName:fileNameSet)
         {
             int articleId=Integer.parseInt(fileName.split("_| ")[0]);
+            System.out.println(inputPath+fileName);
             xmlLoader.setXMLFile(inputPath+fileName);
             articleExtractor.setXmlLoader(xmlLoader);
             articleExtractor.extractArticle();
