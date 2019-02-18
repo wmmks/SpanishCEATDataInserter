@@ -13,9 +13,9 @@ public class InsertUserDataMainFunction {
     public static void main(String args[])
     {
         // 請將 excel 轉成 txt (CEATE = 1 COATE = 2)
-        int systemType=1;
+        int systemType=2;
         UserInformationFileCodeTypeTransformer userInformationFileCodeTypeTransformer=new UserInformationFileCodeTypeTransformer();
-        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2007.txt");
+        String codeTransformedName=userInformationFileCodeTypeTransformer.convert("2005-2006.txt");
         UserInformationLoader userInformationLoader;
         if(systemType==1)
         {
@@ -25,7 +25,7 @@ public class InsertUserDataMainFunction {
         {
             userInformationLoader=new CoateUserInformationLoader();
         }
-        userInformationLoader.loadUserInformationFile(codeTransformedName,systemType);
+        userInformationLoader.loadUserInformationFile(codeTransformedName, systemType);
         insertUserData(userInformationLoader);
 
     }

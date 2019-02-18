@@ -34,7 +34,8 @@ public class CoateUserInformationLoader extends  UserInformationLoader {
         articleInformation.setWrittingLocation(columnValueSet[articleInformationIndex[4]]);
         articleInformation.setArticleStyle(columnValueSet[articleInformationIndex[5]]);
         articleInformation.setArticleTopic(columnValueSet[articleInformationIndex[6]]);
-        articleInformation.setArticleTitle(columnValueSet[articleInformationIndex[7]]);
+        // COATE 36 column(article title), must to remove "
+        articleInformation.setArticleTitle(columnValueSet[articleInformationIndex[7]].replaceAll("\"", ""));
         articleInformation.setNumberOfWords(columnValueSet[articleInformationIndex[8]]);
         articleInformation.setLongMin(columnValueSet[articleInformationIndex[9]]);
         articleInformation.setLongSeg(columnValueSet[articleInformationIndex[10]]);

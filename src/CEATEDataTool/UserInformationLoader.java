@@ -91,10 +91,10 @@ public class UserInformationLoader{
         articleInformation.setWrittingLocation(columnValueSet[articleInformationIndex[4]]);
         articleInformation.setArticleStyle(columnValueSet[articleInformationIndex[5]]);
         articleInformation.setArticleTopic(columnValueSet[articleInformationIndex[6]]);
-        articleInformation.setArticleTitle(columnValueSet[articleInformationIndex[7]]);
+        // CEATE 35 column(article title), must to remove "
+        articleInformation.setArticleTitle(columnValueSet[articleInformationIndex[7]].replaceAll("\"", ""));
         articleInformation.setNumberOfWords(columnValueSet[articleInformationIndex[8]]);
         articleInformationList.add(articleInformation);
-
     }
     public void addUserInformationList(String[] columnVauleSet)
     {
